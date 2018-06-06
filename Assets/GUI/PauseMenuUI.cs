@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class PauseMenuUI : MonoBehaviour
 {
   public CanvasGroup pauseMenuGroup;
+  public CanvasGroup pausePanel;
+  public CanvasGroup controlsPanel;
   public bool showOnStart = false;
   public GameObject defaultSelection;
   bool pauseMenuActive = false;
@@ -48,8 +50,10 @@ public class PauseMenuUI : MonoBehaviour
   public void ShowPauseMenu()
   {
     pauseMenuActive = true;
-    pauseMenuGroup.alpha = 1f;
-    if(timeManager != null)
+    pausePanel.alpha = 1f;
+    pausePanel.interactable = true;
+    pausePanel.blocksRaycasts = true;
+    if (timeManager != null)
     {
       timeManager.StopTime();
     }
@@ -59,11 +63,37 @@ public class PauseMenuUI : MonoBehaviour
   public void HidePauseMenu()
   {
     pauseMenuActive = false;
-    pauseMenuGroup.alpha = 0f;
+    pausePanel.alpha = 0f;
+    pausePanel.interactable = false;
+    pausePanel.blocksRaycasts = false;
     if (timeManager != null)
     {
       timeManager.StartTime();
     }
+  }
+
+  public void ShowControlsPanel()
+  {
+    pausePanel.alpha = 0f;
+    pausePanel.interactable = false;
+    pausePanel.blocksRaycasts = false;
+
+    controlsPanel.alpha = 1f;
+    controlsPanel.interactable = true;
+    controlsPanel.blocksRaycasts = true;
+
+  }
+
+  public void HideControlsPanel()
+  {
+    pausePanel.alpha = 1f;
+    pausePanel.interactable = true;
+    pausePanel.blocksRaycasts = true;
+
+    controlsPanel.alpha = 0f;
+    controlsPanel.interactable = false;
+    controlsPanel.blocksRaycasts = false;
+
   }
 
 
