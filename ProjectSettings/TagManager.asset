@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Rocket
   - Debris
+  - Blackhole
+  - Planet
   layers:
   - Default
   - TransparentFX
@@ -42,4 +44,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackgroundObjects
+    uniqueID: 103972421
+    locked: 0
+  - name: FieldObjects
+    uniqueID: 812526115
+    locked: 0
+  - name: Effects
+    uniqueID: 3393380647
+    locked: 0
+  - name: Planets
+    uniqueID: 1285676895
+    locked: 0
+  - name: UI
+    uniqueID: 3755447995
     locked: 0

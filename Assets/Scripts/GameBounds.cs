@@ -26,10 +26,21 @@ public class GameBounds : MonoBehaviour {
 
   private void OnTriggerExit2D(Collider2D collision)
   {
+    Debug.Log("OnTriggerEnter " + collision.name.ToString());
     if (collision.CompareTag("Rocket"))
     {
       gameManager.RocketEscaped();
     }
+
+    else if (collision.CompareTag("Debris"))
+    {
+      GameObject.Destroy(collision.gameObject, 1f);
+    }
+  }
+
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    Debug.Log("OnTriggerEnter " + collision.name.ToString());
   }
 
 }
