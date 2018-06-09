@@ -34,9 +34,9 @@ public class LaunchPadController : MonoBehaviour {
   {
     yield return new WaitForSeconds(launchPadPrepTime);
     rocket = null;
-    rocket = Instantiate(rocketPrefab, spawnPosition.position, Quaternion.Euler(0f,0f,90f));
+    rocket = Instantiate(rocketPrefab, spawnPosition.position, Quaternion.Euler(0f,0f,0f));
     rocket.transform.SetParent(this.transform.parent.transform);
-    rocket.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
+    rocket.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
     rocket.GetComponent<RocketController>().SetLaunchPad(this);
     launchPadReady = true;
   }

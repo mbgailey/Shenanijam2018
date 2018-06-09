@@ -15,6 +15,7 @@ public class RocketController : MonoBehaviour {
   private bool onPad;
   private Rigidbody2D rb;
   private LaunchPadController myLaunchPad;
+  private FieldObjectDestructor objDestructor;
   public GravityMaster[] gravityMasters;
 
   AudioSource audioSource;
@@ -24,6 +25,11 @@ public class RocketController : MonoBehaviour {
   public ParticleSystem thrustEffect;
   ParticleSystem.EmissionModule thrustEmitter;
 
+  private void Awake()
+  {
+    thrustEmitter = thrustEffect.emission;
+  }
+
   // Use this for initialization
   void Start () {
     rb = this.GetComponent<Rigidbody2D>();
@@ -31,7 +37,9 @@ public class RocketController : MonoBehaviour {
     //rb.simulated = false;
     audioSource = GetComponent<AudioSource>();
     gravityMasters = FindObjectsOfType<GravityMaster>();
-    thrustEmitter = thrustEffect.emission;
+    objDestructor = GetComponent<FieldObjectDestructor>();
+
+
     thrustEmitter.enabled = false;
   }
 	
@@ -72,9 +80,10 @@ public class RocketController : MonoBehaviour {
     rb.AddTorque(-rotateInput * rotateSpeed * Time.deltaTime);
     if (thrustInput)
     {
-      rb.AddRelativeForce(Vector3.right * thrustForce * Time.deltaTime);
+      rb.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
       //thrustEffect.Play();
-      Debug.Log("Thrusting");
+      //Debug.Log("Thrusting");
+      thrustEmitter = thrustEffect.emission;
       thrustEmitter.enabled = true;
       if (thrustSound != null)
       {
@@ -84,7 +93,7 @@ public class RocketController : MonoBehaviour {
     else
     {
       //thrustEffect.Stop();
-
+      thrustEmitter = thrustEffect.emission;
       thrustEmitter.enabled = false;
       if (thrustSound != null)
       {
@@ -134,9 +143,12 @@ public class RocketController : MonoBehaviour {
     //rb.simulated = true;
     rb.isKinematic = false;
     rb.bodyType = RigidbodyType2D.Dynamic;
-    rb.AddRelativeForce(Vector3.right * thrustForce/15, ForceMode2D.Impulse); //Translate vertically for X seconds
+    rb.AddRelativeForce(Vector3.up * thrustForce/15, ForceMode2D.Impulse); //Translate vertically for X seconds
 
+    thrustEffect.Play();
     thrustEmitter.enabled = true;
+
+    
     if (blastoffSound != null)
     {
       audioSource.PlayOneShot(blastoffSound);
@@ -144,6 +156,8 @@ public class RocketController : MonoBehaviour {
     yield return new WaitForSeconds(1f);
     controllable = true;
     thrustEmitter.enabled = false;
+    objDestructor.invincible = false;
+
     StartCoroutine(myLaunchPad.PrepareLaunchPad());
   }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FieldObjectDestructor : MonoBehaviour {
 
+  public bool invincible = true;
   public GameObject explodeEffect;
   public GameObject blackHoleEffect;
   public AudioClip crashSound;
@@ -49,7 +50,7 @@ public class FieldObjectDestructor : MonoBehaviour {
 
     if (blackHoleSound != null)
     {
-      audioSource.PlayOneShot(crashSound);
+      audioSource.PlayOneShot(blackHoleSound);
     }
 
     if (blackHoleEffect != null)
@@ -62,8 +63,11 @@ public class FieldObjectDestructor : MonoBehaviour {
     Destroy(this.gameObject);
   }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+  private void OnCollisionEnter2D(Collision2D collision)
   {
+    if (invincible)
+      return;
+
     if (collision.collider.CompareTag("Planet"))
     {
       StartCoroutine(Explode());
@@ -75,6 +79,11 @@ public class FieldObjectDestructor : MonoBehaviour {
     }
 
     if (collision.collider.CompareTag("Blackhole"))
+    {
+      StartCoroutine(Explode());
+    }
+
+    if (collision.collider.CompareTag("Debris"))
     {
       StartCoroutine(Explode());
     }
