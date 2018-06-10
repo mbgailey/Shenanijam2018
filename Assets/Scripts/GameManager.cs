@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
   LaunchPadController[] launchPads;
   PlanetController planetController;
 
+  int activePad = 0;
+
   public AudioSource audioManagerSource;
   public AudioClip rocketEscapedClip;
 
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour {
     //Debug.Log(launchTimer);
     if(launchTimer <= 0f)
     {
-      LaunchAllReadyRockets();
+      LaunchNextReadyRocket();
       ResetTimer();
     }
 
@@ -50,6 +52,17 @@ public class GameManager : MonoBehaviour {
   public void ResetTimer()
   {
     launchTimer = launchInterval;
+  }
+
+  void LaunchNextReadyRocket()
+  {
+    activePad++;
+    if (activePad>= launchPads.Length)
+    {
+      activePad = 0;
+    }
+
+    launchPads[activePad].LaunchRocket();
   }
 
   void LaunchAllReadyRockets()

@@ -13,6 +13,8 @@ public class LaunchPadController : MonoBehaviour {
 
   GameManager gameManager;
 
+  public bool FlipRocket180 = false;
+
   // Use this for initialization
   void Start () {
     gameManager = FindObjectOfType<GameManager>();
@@ -36,11 +38,17 @@ public class LaunchPadController : MonoBehaviour {
 
   public IEnumerator PrepareLaunchPad()
   {
+    float rot = 0f;
+    if (FlipRocket180)
+    {
+      rot = 180f;
+    }
+
     yield return new WaitForSeconds(launchPadPrepTime);
     rocket = null;
-    rocket = Instantiate(rocketPrefab, spawnPosition.position, Quaternion.Euler(0f,0f,0f));
+    rocket = Instantiate(rocketPrefab, spawnPosition.position, Quaternion.Euler(0f,0f, rot));
     rocket.transform.SetParent(this.transform.parent.transform);
-    rocket.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+    rocket.transform.localEulerAngles = new Vector3(0f, 0f, rot);
     rocket.GetComponent<RocketController>().SetLaunchPad(this);
     launchPadReady = true;
   }
