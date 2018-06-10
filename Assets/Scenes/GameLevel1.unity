@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea31c49cb11c346bf4415c83950a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchPadPrepTime: 0.25
+  launchPadPrepTime: 1
   rocketPrefab: {fileID: 1041684423373386, guid: eaf769f032d5a0f4d9f826002b05e3a1,
     type: 2}
   spawnPosition: {fileID: 405828879}
@@ -3077,6 +3077,7 @@ MonoBehaviour:
   starburst1: {fileID: 1386791053}
   starburst2: {fileID: 378785117}
   mainScaleTransform: {fileID: 661671570}
+  growSpeed: 0.001
 --- !u!114 &1496633175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,7 +3143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   escapeCount: 0
-  launchInterval: 1
+  launchInterval: 5
+  gameDurationSec: 120
   audioManagerSource: {fileID: 1728081135}
   rocketEscapedClip: {fileID: 8300000, guid: 6d217b5bdd8fc8840963238b55cae56d, type: 3}
 --- !u!1 &1531907985
@@ -3932,6 +3934,7 @@ MonoBehaviour:
   starburst1: {fileID: 604819543}
   starburst2: {fileID: 85284134}
   mainScaleTransform: {fileID: 377367265}
+  growSpeed: 0.001
 --- !u!114 &1915062651
 MonoBehaviour:
   m_ObjectHideFlags: 0

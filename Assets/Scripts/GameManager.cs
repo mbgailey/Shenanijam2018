@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
   
   public int escapeCount = 0;
   public int launchInterval = 5;
+  public float gameDurationSec = 60f;
   int rocketsDestroyed = 0;
 
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
   GUIController GUIController;
   LaunchPadController[] launchPads;
   PlanetController planetController;
+  BlackholeController[] blackHoles;
 
   int activePad = 0;
 
@@ -27,7 +29,8 @@ public class GameManager : MonoBehaviour {
     GUIController = FindObjectOfType<GUIController>();
     launchPads = FindObjectsOfType<LaunchPadController>();
     planetController = FindObjectOfType<PlanetController>();
-    
+    blackHoles = FindObjectsOfType<BlackholeController>();
+    SetBlackHoleGrowSpeed();
   }
 	
 	// Update is called once per frame
@@ -70,6 +73,14 @@ public class GameManager : MonoBehaviour {
     foreach(LaunchPadController pad in launchPads)
     {
       pad.LaunchRocket();
+    }
+  }
+
+  void SetBlackHoleGrowSpeed()
+  {
+    foreach (BlackholeController bh in blackHoles)
+    {
+      bh.growSpeed = 5 / gameDurationSec;
     }
   }
 

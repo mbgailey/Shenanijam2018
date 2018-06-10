@@ -32,6 +32,7 @@ public class LaunchPadController : MonoBehaviour {
     if (Input.GetButton("Launch") && launchPadReady)
     {
       LaunchRocket();
+
     }
 	}
 

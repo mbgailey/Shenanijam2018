@@ -21,7 +21,7 @@ public class BlackholeController : MonoBehaviour {
   float pulseSize;
   float pulsePeriod;
   //float growSpeed = 0.03f; //Appx. 1 min game
-  float growSpeed = 0.001f;
+  public float growSpeed = 0.001f;
 
   GameManager gameManager;
 
