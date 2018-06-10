@@ -192,6 +192,7 @@ public class RocketController : MonoBehaviour {
     //Play an effect
     this.transform.DOScale(0f, 1.5f);
     this.transform.DOMove(wormholePos, 1.5f);
+    thrustEmitter.enabled = false;
 
     Destroy(this, 1.6f);
   }
@@ -206,6 +207,7 @@ public class RocketController : MonoBehaviour {
     this.transform.DOScale(0f, 1.5f);
     this.transform.DOMove(wormholePos, 1.5f);
     this.transform.DOLocalRotate(new Vector3(0f, 0f, 1080f), 1.5f, RotateMode.FastBeyond360);
+    thrustEmitter.enabled = false;
 
     Destroy(this, 1.6f);
   }

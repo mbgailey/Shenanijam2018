@@ -22,7 +22,7 @@ public class BlackholeController : MonoBehaviour {
   float pulsePeriod;
   //float growSpeed = 0.03f; //Appx. 1 min game
   public float growSpeed = 0.001f;
-
+  public bool doPulse = true;
   GameManager gameManager;
 
   // Use this for initialization
@@ -36,8 +36,11 @@ public class BlackholeController : MonoBehaviour {
       baseMass = gravityMaster.gravityMass;
     }
     currentScale = mainScaleTransform.localScale.x;
-
-    StartPulse();
+    if (doPulse)
+    {
+      StartPulse();
+    }
+    
   }
 
   // Update is called once per frame

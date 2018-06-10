@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 1.5
-  thrustForce: 20
+  thrustForce: 40
   rotationSpeedLimit: 20
   translationSpeedLimit: 0.4
   controllable: 0

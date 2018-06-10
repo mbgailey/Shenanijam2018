@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0.13725491, a: 0.634}
+  m_Color: {r: 0, g: 0, b: 0.13725491, a: 0.803}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -630,7 +630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 81}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 420, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &113511178
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+  m_Color: {r: 0.53333336, g: 0.882353, b: 0.9921569, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countDownText: {fileID: 1164832246}
-  scoreText: {fileID: 418749216}
+  scoreText: {fileID: 1760786040}
   endText1: {fileID: 56625552}
   endText2: {fileID: 591110798}
   endText3: {fileID: 1872304215}
@@ -3115,7 +3115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+  m_Color: {r: 0.53333336, g: 0.882353, b: 0.9921569, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4622,13 +4622,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df50155e5c391f44db18d0f63f0f2f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 4
+  rotateSpeed: 2
   fieldRadiusMin: 9.15
   fieldRadiusMax: 9.25
   debrisScaleMin: 0.85
   debrisScaleMax: 0.95
   debrisLocalRotationMax: 20
-  debrisCount: 100
+  debrisCount: 60
   debrisPrefabs:
   - {fileID: 1122322501000906, guid: 858b51560f3de344abbc5fcb5e232b2a, type: 2}
   - {fileID: 1926973596217650, guid: 37ee84453ac26ba4ab677c4dabf6e3a2, type: 2}
@@ -4800,7 +4800,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 15b2b2d24abb5ac4fb955dd8a4d76d76, type: 3}
+  m_audioClip: {fileID: 8300000, guid: da600a7c74da1984ca75d913bc72d5ef, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4932,7 +4932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+  m_Color: {r: 0.53333336, g: 0.882353, b: 0.9921569, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5427,6 +5427,7 @@ MonoBehaviour:
   starburst2: {fileID: 85284134}
   mainScaleTransform: {fileID: 377367265}
   growSpeed: 0.001
+  doPulse: 1
 --- !u!114 &1915062651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,7 +5567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+  m_Color: {r: 0.53333336, g: 0.882353, b: 0.9921569, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
