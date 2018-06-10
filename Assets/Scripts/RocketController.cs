@@ -17,6 +17,7 @@ public class RocketController : MonoBehaviour {
   private LaunchPadController myLaunchPad;
   private FieldObjectDestructor objDestructor;
   public GravityMaster[] gravityMasters;
+  GameManager gameManager;
 
   AudioSource audioSource;
   public AudioClip blastoffSound;
@@ -38,7 +39,7 @@ public class RocketController : MonoBehaviour {
     audioSource = GetComponent<AudioSource>();
     gravityMasters = FindObjectsOfType<GravityMaster>();
     objDestructor = GetComponent<FieldObjectDestructor>();
-
+    gameManager = FindObjectOfType<GameManager>();
 
     thrustEmitter.enabled = false;
   }
@@ -100,6 +101,11 @@ public class RocketController : MonoBehaviour {
         //audioSource.Stop();
       }
     }
+
+    if (objDestructor.isBeingDestroyed)
+    {
+      thrustEmitter.enabled = false;
+    }
     
   }
 
@@ -143,7 +149,7 @@ public class RocketController : MonoBehaviour {
     //rb.simulated = true;
     rb.isKinematic = false;
     rb.bodyType = RigidbodyType2D.Dynamic;
-    rb.AddRelativeForce(Vector3.up * thrustForce/15, ForceMode2D.Impulse); //Translate vertically for X seconds
+    rb.AddRelativeForce(Vector3.up * thrustForce/30, ForceMode2D.Impulse); //Translate vertically for X seconds
 
     thrustEffect.Play();
     thrustEmitter.enabled = true;
@@ -170,6 +176,16 @@ public class RocketController : MonoBehaviour {
   public void Escape()
   {
     /////Play some effect first
+    objDestructor.invincible = true;
+    gameManager.RocketEscaped();
+    Destroy(this, 1f);
+  }
+
+  public void EnteredWormhole()
+  {
+    /////Play some effect first
+    objDestructor.invincible = true;
+    gameManager.RocketEscaped();
     Destroy(this, 1f);
   }
 }

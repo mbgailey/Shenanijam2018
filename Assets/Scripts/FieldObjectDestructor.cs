@@ -14,6 +14,8 @@ public class FieldObjectDestructor : MonoBehaviour {
 
   public AudioSource audioSource;
 
+  public bool isBeingDestroyed = false;
+
 	// Use this for initialization
 	void Start () {
     audioSource = GetComponent<AudioSource>();
@@ -31,6 +33,7 @@ public class FieldObjectDestructor : MonoBehaviour {
     float explodeDelay = 0.2f;
 
     //Start break apart effect
+    isBeingDestroyed = true;
 
     if (crashSound != null)
     {
@@ -58,6 +61,8 @@ public class FieldObjectDestructor : MonoBehaviour {
   IEnumerator BlackHoleDeath()
   {
     float explodeDelay = 1f;
+    isBeingDestroyed = true;
+
 
     if (blackHoleSound != null)
     {

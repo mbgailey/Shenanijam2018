@@ -29,8 +29,13 @@ public class GameBounds : MonoBehaviour {
     //Debug.Log("OnTriggerEnter " + collision.name.ToString());
     if (collision.CompareTag("Rocket"))
     {
-      collision.GetComponent<RocketController>().Escape();
-      gameManager.RocketEscaped();
+      if (!collision.GetComponent<FieldObjectDestructor>().isBeingDestroyed)
+      {
+        collision.GetComponent<RocketController>().Escape();
+      }
+
+      
+      //gameManager.RocketEscaped();
     }
 
     else if (collision.CompareTag("Debris"))

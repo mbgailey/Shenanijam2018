@@ -17,11 +17,15 @@ public class GameManager : MonoBehaviour {
   LaunchPadController[] launchPads;
   PlanetController planetController;
 
-	// Use this for initialization
-	void Start () {
+  public AudioSource audioManagerSource;
+  public AudioClip rocketEscapedClip;
+
+  // Use this for initialization
+  void Start () {
     GUIController = FindObjectOfType<GUIController>();
     launchPads = FindObjectsOfType<LaunchPadController>();
     planetController = FindObjectOfType<PlanetController>();
+    
   }
 	
 	// Update is called once per frame
@@ -58,6 +62,8 @@ public class GameManager : MonoBehaviour {
 
   public void RocketEscaped()
   {
+    audioManagerSource.PlayOneShot(rocketEscapedClip);
+
     escapeCount++;
     GUIController.UpdateScore(escapeCount);
     Debug.Log("Another one escaped");
