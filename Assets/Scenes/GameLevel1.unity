@@ -1312,6 +1312,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 212072003454294140, guid: eefa3387fc4bf2f4d9cacb5060e7f8b6,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212884507795665802, guid: eefa3387fc4bf2f4d9cacb5060e7f8b6,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eefa3387fc4bf2f4d9cacb5060e7f8b6, type: 2}
   m_IsPrefabParent: 0
@@ -1720,7 +1730,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 103972421
   m_SortingLayer: 1
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: cce821f49e0cb8045850c9f1e79bfb0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.691}
   m_FlipX: 0
@@ -2070,9 +2080,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650b8a097d46d1b4f92cba57148b3e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -4
+  rotateSpeed: -8
   starburst1: {fileID: 1042725896}
   starburst2: {fileID: 1452175961}
+  pulseColor: {r: 0.48010382, g: 0.8657081, b: 0.88235295, a: 1}
 --- !u!58 &844517037
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2143,7 +2154,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 400afa462263bfe40b5e2f4819770584, type: 3}
-  m_Color: {r: 0.4632353, g: 0.7727688, b: 0.875, a: 1}
+  m_Color: {r: 0.24978375, g: 0.5263155, b: 0.61764705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5508,7 +5519,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 103972421
   m_SortingLayer: 1
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 974881e2c15f28f438dc5e0baaa778ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

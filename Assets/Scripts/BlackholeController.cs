@@ -51,7 +51,7 @@ public class BlackholeController : MonoBehaviour {
     rb.angularVelocity = rotateSpeed;
     if(gravityMaster != null)
     {
-      gravityMaster.gravityMass = transform.localScale.x * baseMass;
+      gravityMaster.gravityMass = (transform.parent.transform.localScale.x + transform.localScale.x) * baseMass;
     }
     
     RunGrow();

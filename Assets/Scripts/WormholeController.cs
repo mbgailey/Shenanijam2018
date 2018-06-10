@@ -16,12 +16,15 @@ public class WormholeController : MonoBehaviour {
   private Rigidbody2D rb;
   GameManager gameManager;
 
+  public Color pulseColor;
+
   // Use this for initialization
   void Start()
   {
     rb = this.GetComponent<Rigidbody2D>();
     gameManager = FindObjectOfType<GameManager>();
-
+    StartPulse();
+    
   }
 
   // Update is called once per frame
@@ -30,6 +33,17 @@ public class WormholeController : MonoBehaviour {
     starburst1.Rotate(0f, 0f, starburst1Speed * Time.deltaTime);
     starburst2.Rotate(0f, 0f, starburst2Speed * Time.deltaTime);
     rb.angularVelocity = rotateSpeed;
+
+  }
+
+  public void StartPulse()
+  {
+    float pulseSize = 1.1f;
+    float pulsePeriod = 5f;
+
+    transform.parent.transform.DOScale(pulseSize, pulsePeriod).SetLoops(-1, LoopType.Yoyo);
+
+    this.GetComponent<SpriteRenderer>().DOColor(pulseColor, 4f).SetLoops(-1, LoopType.Yoyo);
 
   }
 
@@ -42,7 +56,7 @@ public class WormholeController : MonoBehaviour {
       collision.GetComponent<RocketController>().EnteredWormhole(this.transform.position);
 
       float punch = 0.1f;
-      this.transform.parent.transform.DOPunchScale(new Vector3(punch, punch, punch), 3f, 2, 0.1f);
+      this.transform.DOPunchScale(new Vector3(punch, punch, punch), 3f, 2, 0.1f);
     }
   }
 
