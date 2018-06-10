@@ -10,9 +10,14 @@ public class PauseMenuUI : MonoBehaviour
   public CanvasGroup pauseMenuGroup;
   public CanvasGroup pausePanel;
   public CanvasGroup controlsPanel;
+  public CanvasGroup creditsPanel;
   public bool showOnStart = false;
   public GameObject defaultSelection;
+  public GameObject defaultControlsSel;
+  public GameObject defaultCreditsSel;
   bool pauseMenuActive = false;
+  bool controlsPanelActive = false;
+  bool creditsPanelActive = false;
   TimeManager timeManager;
 
   private void Start()
@@ -24,6 +29,9 @@ public class PauseMenuUI : MonoBehaviour
     }
     else
     {
+      
+      HideControlsPanel();
+      HideCreditsPanel();
       HidePauseMenu();
     }
   }
@@ -31,7 +39,21 @@ public class PauseMenuUI : MonoBehaviour
   {
     if (Input.GetKeyDown(KeyCode.Escape))
     {
-      TogglePauseMenu();
+      if(pauseMenuActive && controlsPanelActive)
+      {
+        HideControlsPanel();
+      }
+
+      else if(pauseMenuActive && creditsPanelActive)
+      {
+        HideCreditsPanel();
+      }
+      else
+      {
+        TogglePauseMenu();
+      }
+
+      
     }
   }
 
@@ -81,7 +103,8 @@ public class PauseMenuUI : MonoBehaviour
     controlsPanel.alpha = 1f;
     controlsPanel.interactable = true;
     controlsPanel.blocksRaycasts = true;
-
+    controlsPanelActive = true;
+    EventSystem.current.SetSelectedGameObject(defaultControlsSel);
   }
 
   public void HideControlsPanel()
@@ -93,9 +116,36 @@ public class PauseMenuUI : MonoBehaviour
     controlsPanel.alpha = 0f;
     controlsPanel.interactable = false;
     controlsPanel.blocksRaycasts = false;
-
+    controlsPanelActive = false;
+    //EventSystem.current.SetSelectedGameObject(defaultSelection);
   }
 
+
+  public void ShowCreditsPanel()
+  {
+    pausePanel.alpha = 0f;
+    pausePanel.interactable = false;
+    pausePanel.blocksRaycasts = false;
+
+    creditsPanel.alpha = 1f;
+    creditsPanel.interactable = true;
+    creditsPanel.blocksRaycasts = true;
+    creditsPanelActive = true;
+    EventSystem.current.SetSelectedGameObject(defaultCreditsSel);
+  }
+
+  public void HideCreditsPanel()
+  {
+    pausePanel.alpha = 1f;
+    pausePanel.interactable = true;
+    pausePanel.blocksRaycasts = true;
+
+    creditsPanel.alpha = 0f;
+    creditsPanel.interactable = false;
+    creditsPanel.blocksRaycasts = false;
+    creditsPanelActive = false;
+    //EventSystem.current.SetSelectedGameObject(defaultSelection);
+  }
 
   public void GoToMainMenu()
   {

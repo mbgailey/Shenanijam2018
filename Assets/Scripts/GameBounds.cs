@@ -31,17 +31,18 @@ public class GameBounds : MonoBehaviour {
     {
       if (!collision.GetComponent<FieldObjectDestructor>().isBeingDestroyed)
       {
-        collision.GetComponent<RocketController>().Escape();
+        //collision.GetComponent<RocketController>().Escape();
+        collision.GetComponent<RocketController>().Destroyed();
       }
 
       
       //gameManager.RocketEscaped();
     }
 
-    else if (collision.CompareTag("Debris"))
-    {
-      GameObject.Destroy(collision.gameObject, 1f);
-    }
+    //else if (collision.CompareTag("Debris"))
+    //{
+    //  GameObject.Destroy(collision.gameObject, 1f);
+    //}
   }
 
   private void OnTriggerEnter2D(Collider2D collision)

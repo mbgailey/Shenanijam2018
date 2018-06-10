@@ -39,7 +39,10 @@ public class WormholeController : MonoBehaviour {
     if (collision.CompareTag("Rocket"))
     {
       Debug.Log("Rocket entered wormhole");
-      collision.GetComponent<RocketController>().EnteredWormhole();
+      collision.GetComponent<RocketController>().EnteredWormhole(this.transform.position);
+
+      float punch = 0.1f;
+      this.transform.parent.transform.DOPunchScale(new Vector3(punch, punch, punch), 3f, 2, 0.1f);
     }
   }
 

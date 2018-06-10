@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RocketController : MonoBehaviour {
 
@@ -47,13 +48,11 @@ public class RocketController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     GetInputs();
-    if (controllable)
+    if (controllable && !objDestructor.isBeingDestroyed)
     {
       ApplyControlForces();
       ApplyExternalForces();
     }
-    
-
 
     if (onPad)
     {
@@ -137,8 +136,11 @@ public class RocketController : MonoBehaviour {
       forces += grav.GetGravityForce(this.transform.position);
 
     }
-
-    rb.AddForce(forces * Time.deltaTime);
+    if (rb != null)
+    {
+      rb.AddForce(forces * Time.deltaTime);
+    }
+    
     //Debug.Log("External force applied: " + forces);
   }
 
@@ -181,11 +183,35 @@ public class RocketController : MonoBehaviour {
     Destroy(this, 1f);
   }
 
-  public void EnteredWormhole()
+  public void EnteredWormhole(Vector3 wormholePos)
   {
     /////Play some effect first
     objDestructor.invincible = true;
     gameManager.RocketEscaped();
-    Destroy(this, 1f);
+
+    //Play an effect
+    this.transform.DOScale(0f, 1.5f);
+    this.transform.DOMove(wormholePos, 1.5f);
+
+    Destroy(this, 1.6f);
+  }
+
+  public void EnteredBlackhole(Vector3 wormholePos)
+  {
+    /////Play some effect first
+    objDestructor.invincible = true;
+    gameManager.RocketDestroyed();
+
+    //Play an effect
+    this.transform.DOScale(0f, 1.5f);
+    this.transform.DOMove(wormholePos, 1.5f);
+    this.transform.DOLocalRotate(new Vector3(0f, 0f, 1080f), 1.5f, RotateMode.FastBeyond360);
+
+    Destroy(this, 1.6f);
+  }
+
+  public void Destroyed()
+  {
+    gameManager.RocketDestroyed();
   }
 }

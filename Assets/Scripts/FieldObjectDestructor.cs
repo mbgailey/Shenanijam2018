@@ -16,11 +16,15 @@ public class FieldObjectDestructor : MonoBehaviour {
 
   public bool isBeingDestroyed = false;
 
+  RocketController rocketController;
+  CameraShake camShake;
+
 	// Use this for initialization
 	void Start () {
     audioSource = GetComponent<AudioSource>();
     explodeEmitter = explodeEffect.emission;
-
+    rocketController = GetComponent<RocketController>();
+    camShake = FindObjectOfType<CameraShake>();
   }
 	
 	// Update is called once per frame
@@ -41,6 +45,9 @@ public class FieldObjectDestructor : MonoBehaviour {
     }
     yield return new WaitForSeconds(explodeDelay);
 
+    StartCoroutine(camShake.Shake());
+    rocketController.Destroyed();
+
     if (explodeEffect != null)
     {
       explodeEffect.Play();
@@ -58,9 +65,8 @@ public class FieldObjectDestructor : MonoBehaviour {
     Destroy(this.gameObject, 2f); //Wait to destroy in case stuff is still going on
   }
 
-  IEnumerator BlackHoleDeath()
+  void BlackHoleDeath()
   {
-    float explodeDelay = 1f;
     isBeingDestroyed = true;
 
 
@@ -74,9 +80,9 @@ public class FieldObjectDestructor : MonoBehaviour {
       Instantiate(blackHoleEffect, transform.position, Quaternion.identity);
     }
 
-    yield return new WaitForSeconds(explodeDelay);
+    //yield return new WaitForSeconds(explodeDelay);
 
-    Destroy(this.gameObject);
+    //Destroy(this.gameObject);
   }
 
   private void OnCollisionEnter2D(Collision2D collision)
@@ -110,7 +116,9 @@ public class FieldObjectDestructor : MonoBehaviour {
 
     if (collision.CompareTag("Blackhole"))
     {
-      StartCoroutine(BlackHoleDeath());
+      BlackHoleDeath();
+      rocketController.EnteredBlackhole(collision.transform.position);
+      
     }
   }
 }

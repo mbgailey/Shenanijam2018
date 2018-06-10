@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 93e365de1b1f4884e80911a80558059d
+timeCreated: 1528646914
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Printed Circuit Board
+  fontNames:
+  - Printed Circuit Board
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8a79c86f2f0f5e7418513ade9009249f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

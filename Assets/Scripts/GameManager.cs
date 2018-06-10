@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
   
   public int escapeCount = 0;
+  public int rocketsDestroyed = 0;
   public int launchInterval = 5;
   public float gameDurationSec = 60f;
-  int rocketsDestroyed = 0;
+  
 
 
   float launchTimer;
+  public bool gameOver = false;
+  bool readyToRestartLevel = false;
 
   GameBounds gameBounds;
   GUIController GUIController;
@@ -35,7 +39,17 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    RunLaunchTimer();
+
+    if (!gameOver)
+    {
+      RunLaunchTimer();
+    }
+    
+
+    if(readyToRestartLevel && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
+    {
+      RestartLevel();
+    }
 
   }
 
@@ -95,15 +109,26 @@ public class GameManager : MonoBehaviour {
 
   public IEnumerator EndGameSequence()
   {
-    planetController.DestroyPlanet();
+    gameOver = true;
 
-    yield return new WaitForSeconds(1f);
+    StartCoroutine(planetController.DestroyPlanet());
 
-    GUIController.DisplayGameOverText(escapeCount);
+    yield return new WaitForSeconds(5f);
+
+    StartCoroutine(GUIController.DisplayGameOverText(escapeCount, rocketsDestroyed));
+
+    yield return new WaitForSeconds(7.5f);
+
+    readyToRestartLevel = true;
   }
 
   public void RocketDestroyed()
   {
     rocketsDestroyed++;
+  }
+
+  public void RestartLevel()
+  {
+    SceneManager.LoadScene(1);
   }
 }

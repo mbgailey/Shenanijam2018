@@ -31,8 +31,10 @@ public class BlackholeController : MonoBehaviour {
     rb = this.GetComponent<Rigidbody2D>();
     gravityMaster = this.GetComponent<GravityMaster>();
     gameManager = FindObjectOfType<GameManager>();
-
-    baseMass = gravityMaster.gravityMass;
+    if (gravityMaster != null)
+    {
+      baseMass = gravityMaster.gravityMass;
+    }
     currentScale = mainScaleTransform.localScale.x;
 
     StartPulse();
@@ -44,7 +46,11 @@ public class BlackholeController : MonoBehaviour {
     starburst1.Rotate(0f, 0f, starburst1Speed * Time.deltaTime);
     starburst2.Rotate(0f, 0f, starburst2Speed * Time.deltaTime);
     rb.angularVelocity = rotateSpeed;
-    gravityMaster.gravityMass = transform.localScale.x * baseMass;
+    if(gravityMaster != null)
+    {
+      gravityMaster.gravityMass = transform.localScale.x * baseMass;
+    }
+    
     RunGrow();
   }
 
@@ -74,8 +80,11 @@ public class BlackholeController : MonoBehaviour {
     if (collision.CompareTag("Planet"))
     {
       Debug.Log("Blackhole collided with planet");
-
-      StartCoroutine(gameManager.EndGameSequence());
+      if (!gameManager.gameOver)
+      {
+        StartCoroutine(gameManager.EndGameSequence());
+      }
+      
     }
   }
 

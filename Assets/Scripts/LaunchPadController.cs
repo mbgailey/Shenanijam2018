@@ -25,6 +25,9 @@ public class LaunchPadController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+    if (gameManager.gameOver)
+      return;
+
     padOrientation = this.transform.position - this.transform.parent.transform.position;
 
     
@@ -61,6 +64,8 @@ public class LaunchPadController : MonoBehaviour {
 
     launchPadReady = false;
     gameManager.ResetTimer();
+    if (rocket == null)
+      return;
     StartCoroutine(rocket.GetComponent<RocketController>().LaunchRoutine());
     
   }
