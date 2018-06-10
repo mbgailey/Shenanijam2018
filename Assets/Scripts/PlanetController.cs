@@ -20,5 +20,10 @@ public class PlanetController : MonoBehaviour {
     rb.angularVelocity = rotateSpeed;
   }
 
+  public void DestroyPlanet()
+  {
+
+  }
+
   
 }

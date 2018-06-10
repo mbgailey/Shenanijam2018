@@ -11,8 +11,12 @@ public class LaunchPadController : MonoBehaviour {
   GameObject rocket;
   public Vector2 padOrientation = new Vector2();
 
+  GameManager gameManager;
+
   // Use this for initialization
   void Start () {
+    gameManager = FindObjectOfType<GameManager>();
+
     StartCoroutine(PrepareLaunchPad());
 	}
 	
@@ -41,13 +45,13 @@ public class LaunchPadController : MonoBehaviour {
     launchPadReady = true;
   }
 
-  void LaunchRocket()
+  public void LaunchRocket()
   {
     if (rocket == null)
       return;
 
     launchPadReady = false;
-    
+    gameManager.ResetTimer();
     StartCoroutine(rocket.GetComponent<RocketController>().LaunchRoutine());
     
   }

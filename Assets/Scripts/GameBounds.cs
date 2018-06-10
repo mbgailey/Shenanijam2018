@@ -29,6 +29,7 @@ public class GameBounds : MonoBehaviour {
     //Debug.Log("OnTriggerEnter " + collision.name.ToString());
     if (collision.CompareTag("Rocket"))
     {
+      collision.GetComponent<RocketController>().Escape();
       gameManager.RocketEscaped();
     }
 

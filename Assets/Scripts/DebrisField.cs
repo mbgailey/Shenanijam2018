@@ -35,7 +35,7 @@ public class DebrisField : MonoBehaviour {
       float zAngle = Random.Range(0f, 360f);
       float x = Mathf.Cos(zAngle * Mathf.Deg2Rad) * radius;
       float y = Mathf.Sin(zAngle * Mathf.Deg2Rad) * radius;
-      Debug.Log("zAngle: " + zAngle + " x: " + x + " y: " + y);
+      //Debug.Log("zAngle: " + zAngle + " x: " + x + " y: " + y);
       Vector2 pos = new Vector2(x, y);
       deb.transform.localPosition = pos;
       deb.GetComponent<DebrisController>().rotateSpeed = Random.Range(-debrisLocalRotationMax, debrisLocalRotationMax);

@@ -166,4 +166,10 @@ public class RocketController : MonoBehaviour {
     myLaunchPad = pad;
     onPad = true;
   }
+
+  public void Escape()
+  {
+    /////Play some effect first
+    Destroy(this, 1f);
+  }
 }
