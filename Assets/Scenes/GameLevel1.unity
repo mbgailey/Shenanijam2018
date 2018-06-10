@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650b8a097d46d1b4f92cba57148b3e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 4
+  rotateSpeed: -4
   starburst1: {fileID: 1042725896}
   starburst2: {fileID: 1452175961}
 --- !u!58 &844517037

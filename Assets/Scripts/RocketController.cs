@@ -149,7 +149,7 @@ public class RocketController : MonoBehaviour {
     //rb.simulated = true;
     rb.isKinematic = false;
     rb.bodyType = RigidbodyType2D.Dynamic;
-    rb.AddRelativeForce(Vector3.up * thrustForce/30, ForceMode2D.Impulse); //Translate vertically for X seconds
+    rb.AddRelativeForce(Vector3.up * thrustForce/60, ForceMode2D.Impulse); //Translate vertically for X seconds
 
     thrustEffect.Play();
     thrustEmitter.enabled = true;
