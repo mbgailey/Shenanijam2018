@@ -19,6 +19,8 @@ public class FieldObjectDestructor : MonoBehaviour {
   RocketController rocketController;
   CameraShake camShake;
 
+  public GameObject flavorText;
+
 	// Use this for initialization
 	void Start () {
     audioSource = GetComponent<AudioSource>();
@@ -34,6 +36,9 @@ public class FieldObjectDestructor : MonoBehaviour {
 
   IEnumerator Explode()
   {
+    
+    //Debug.Log("Explode");
+
     float explodeDelay = 0.2f;
 
     //Start break apart effect
@@ -54,6 +59,12 @@ public class FieldObjectDestructor : MonoBehaviour {
       explodeEmitter.enabled = true;
       //Instantiate(explodeEffect, transform.position, Quaternion.identity);
     }
+
+    GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
+    flavor.transform.position = this.transform.position;
+    flavor.GetComponent<DialogueController>().InitializeText_explode();
+    flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
+
     this.GetComponent<SpriteRenderer>().enabled = false;
     this.GetComponent<PolygonCollider2D>().enabled = false;
 
@@ -67,6 +78,12 @@ public class FieldObjectDestructor : MonoBehaviour {
 
   void BlackHoleDeath()
   {
+    GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
+    flavor.transform.position = this.transform.position;
+    flavor.GetComponent<DialogueController>().InitializeText_blackhole();
+    flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
+    //Debug.Log("BH");
+
     isBeingDestroyed = true;
 
 

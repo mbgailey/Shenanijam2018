@@ -303,7 +303,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 50252370}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -530,7 +530,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 97718345}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -948,6 +948,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1706767528}
+    - target: {fileID: 225079199771688426, guid: a085b6e40d27ac440b0cc67c8c353fe0,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a085b6e40d27ac440b0cc67c8c353fe0, type: 2}
   m_IsPrefabParent: 0
@@ -1689,6 +1694,110 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &633317356
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.01722016
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.14542061
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.3685098
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224892389577194776, guid: 40b413decc38b5f40af8af89fb3b7899,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1235434733327456, guid: 40b413decc38b5f40af8af89fb3b7899, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 40b413decc38b5f40af8af89fb3b7899, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &662147340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,6 +2662,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1706767528}
+    - target: {fileID: 225914673240234770, guid: f11dfaf5348d0764faf3e1f97ec14f7e,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f11dfaf5348d0764faf3e1f97ec14f7e, type: 2}
   m_IsPrefabParent: 0
@@ -3846,6 +3960,7 @@ GameObject:
   - component: {fileID: 1527623667}
   - component: {fileID: 1527623666}
   - component: {fileID: 1527623668}
+  - component: {fileID: 1527623669}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3891,9 +4006,54 @@ MonoBehaviour:
   escapeCount: 0
   rocketsDestroyed: 0
   launchInterval: 5
+  gameDurationSec: 120
   gameOver: 0
   audioManagerSource: {fileID: 1728081135}
   rocketEscapedClip: {fileID: 8300000, guid: 6d217b5bdd8fc8840963238b55cae56d, type: 3}
+--- !u!114 &1527623669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527623665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704ec0cc49d8161498516d743ec5a18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackHoleOptions:
+  - Hello sweet void
+  - Remember meeeeeeee
+  - Send help
+  - I feel squishy
+  - I'll wait for you
+  - This is the end
+  - Noooooooooo
+  launchOptions:
+  - I'm so scared
+  - Ayyyyyyy
+  - Let's do this
+  - Get me to safety
+  - Let's do this
+  escapeOptions:
+  - Wheeeeeee
+  - Yes!
+  - We are safe!
+  - Praise Xenu!
+  - We made it!
+  - To the blockchain!
+  - Glorious!
+  explodeOptions:
+  - Nooooooo
+  - Why did you do this to me?
+  - My final hurrah!
+  - My organs
+  - I am ded
+  - I am suffering
+  - So much pain
+  - Why?
+  - Fire everywhere
+  - Not like this
 --- !u!1 &1531907985
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class RocketController : MonoBehaviour {
   public ParticleSystem thrustEffect;
   ParticleSystem.EmissionModule thrustEmitter;
 
+  public GameObject flavorText;
+
   private void Awake()
   {
     thrustEmitter = thrustEffect.emission;
@@ -146,6 +148,12 @@ public class RocketController : MonoBehaviour {
 
   public IEnumerator LaunchRoutine()
   {
+    GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
+    flavor.transform.position = this.transform.position;
+    flavor.GetComponent<DialogueController>().InitializeText_launch();
+    flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
+    //Debug.Log("launch");
+
     onPad = false;
     transform.SetParent(null);
     //rb.simulated = true;
@@ -177,10 +185,16 @@ public class RocketController : MonoBehaviour {
 
   public void Escape()
   {
+    GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
+    flavor.transform.position = this.transform.position;
+    flavor.GetComponent<DialogueController>().InitializeText_escape();
+    flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
+    //Debug.Log("escape");
+
     /////Play some effect first
     objDestructor.invincible = true;
     gameManager.RocketEscaped();
-    Destroy(this, 1f);
+    Destroy(this.gameObject, 1f);
   }
 
   public void EnteredWormhole(Vector3 wormholePos)
@@ -194,7 +208,7 @@ public class RocketController : MonoBehaviour {
     this.transform.DOMove(wormholePos, 1.5f);
     thrustEmitter.enabled = false;
 
-    Destroy(this, 1.6f);
+    Destroy(this.gameObject, 1.6f);
   }
 
   public void EnteredBlackhole(Vector3 wormholePos)
@@ -209,7 +223,7 @@ public class RocketController : MonoBehaviour {
     this.transform.DOLocalRotate(new Vector3(0f, 0f, 1080f), 1.5f, RotateMode.FastBeyond360);
     thrustEmitter.enabled = false;
 
-    Destroy(this, 1.6f);
+    Destroy(this.gameObject, 1.6f);
   }
 
   public void Destroyed()

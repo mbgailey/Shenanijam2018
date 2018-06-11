@@ -377,6 +377,7 @@ MonoBehaviour:
   blackHoleSound: {fileID: 8300000, guid: 587cb72a0b06450459a029459e35da70, type: 3}
   audioSource: {fileID: 82519620185431040}
   isBeingDestroyed: 0
+  flavorText: {fileID: 1235434733327456, guid: 40b413decc38b5f40af8af89fb3b7899, type: 2}
 --- !u!114 &114261960346631718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +399,7 @@ MonoBehaviour:
   blastoffSound: {fileID: 8300000, guid: f005431ba20401c448298cfd267ce8c5, type: 3}
   thrustSound: {fileID: 8300000, guid: e5669773ff232604680d4dda6358e936, type: 3}
   thrustEffect: {fileID: 198254668714887128}
+  flavorText: {fileID: 1235434733327456, guid: 40b413decc38b5f40af8af89fb3b7899, type: 2}
 --- !u!198 &198254668714887128
 ParticleSystem:
   m_ObjectHideFlags: 1
