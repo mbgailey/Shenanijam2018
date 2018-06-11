@@ -15,16 +15,29 @@ public class GUIController : MonoBehaviour {
   public Text endText5;
   public CanvasGroup countdownGroup;
   public CanvasGroup scoreGroup;
+  public CanvasGroup blackScreen;
+  TimeManager timeManager;
 
   // Use this for initialization
   void Start () {
-		
-	}
+    timeManager =  FindObjectOfType<TimeManager>();
+    timeManager.StopTime();
+    blackScreen.alpha = 1f;
+    StartCoroutine(FadeIntoGame());
+  }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+  IEnumerator FadeIntoGame()
+  {
+    yield return new WaitForSeconds(1f);
+    blackScreen.DOFade(0f, 3f);
+    yield return new WaitForSeconds(2f);
+    timeManager.StartTime();
+  }
 
   public void UpdateCountdown(float timeLeft)
   {

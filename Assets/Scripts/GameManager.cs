@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
   public int escapeCount = 0;
   public int rocketsDestroyed = 0;
   public int launchInterval = 5;
-  public float gameDurationSec = 60f;
+  public float gameDurationSec = 120f;
   
 
 
@@ -22,18 +22,22 @@ public class GameManager : MonoBehaviour {
   LaunchPadController[] launchPads;
   PlanetController planetController;
   BlackholeController[] blackHoles;
+  GameSettings gameSettings;
 
-  int activePad = 0;
+  int activePad = 1;
 
   public AudioSource audioManagerSource;
   public AudioClip rocketEscapedClip;
 
   // Use this for initialization
   void Start () {
+    GameSettings gameSettings = FindObjectOfType<GameSettings>();
     GUIController = FindObjectOfType<GUIController>();
     launchPads = FindObjectsOfType<LaunchPadController>();
     planetController = FindObjectOfType<PlanetController>();
     blackHoles = FindObjectsOfType<BlackholeController>();
+    gameDurationSec = GameSettings.Instance.GameDuration;
+    Debug.Log("Game duration set to " + gameDurationSec);
     SetBlackHoleGrowSpeed();
   }
 	
