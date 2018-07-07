@@ -1128,6 +1128,7 @@ MonoBehaviour:
   - {fileID: 1926973596217650, guid: 37ee84453ac26ba4ab677c4dabf6e3a2, type: 2}
   - {fileID: 1345797864852760, guid: be952aca110ce914fb13c75931b7970c, type: 2}
   - {fileID: 1459969986119622, guid: 68dd19487ba3b0a4fb29b54e89c76e1c, type: 2}
+  createOverTime: 0
 --- !u!4 &502046390
 Transform:
   m_ObjectHideFlags: 0
@@ -2681,9 +2682,9 @@ GameObject:
   - component: {fileID: 1022869032}
   - component: {fileID: 1022869031}
   - component: {fileID: 1022869034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameBounds
-  m_TagString: Untagged
+  m_TagString: Gamebounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2722,7 +2723,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15.71, y: 9.68}
+  m_Size: {x: 16.53, y: 10.4}
   m_EdgeRadius: 0
 --- !u!4 &1022869033
 Transform:
@@ -4007,6 +4008,8 @@ MonoBehaviour:
   rocketsDestroyed: 0
   launchInterval: 5
   gameDurationSec: 120
+  mainDebrisField: {fileID: 1705419181}
+  gamePhase: 0
   gameOver: 0
   audioManagerSource: {fileID: 1728081135}
   rocketEscapedClip: {fileID: 8300000, guid: 6d217b5bdd8fc8840963238b55cae56d, type: 3}
@@ -4466,6 +4469,7 @@ MonoBehaviour:
   - {fileID: 1926973596217650, guid: 37ee84453ac26ba4ab677c4dabf6e3a2, type: 2}
   - {fileID: 1345797864852760, guid: be952aca110ce914fb13c75931b7970c, type: 2}
   - {fileID: 1459969986119622, guid: 68dd19487ba3b0a4fb29b54e89c76e1c, type: 2}
+  createOverTime: 1
 --- !u!4 &1705419182
 Transform:
   m_ObjectHideFlags: 0
@@ -4943,12 +4947,13 @@ MonoBehaviour:
   debrisScaleMin: 0.95
   debrisScaleMax: 1.05
   debrisLocalRotationMax: 20
-  debrisCount: 20
+  debrisCount: 12
   debrisPrefabs:
   - {fileID: 1122322501000906, guid: 858b51560f3de344abbc5fcb5e232b2a, type: 2}
   - {fileID: 1926973596217650, guid: 37ee84453ac26ba4ab677c4dabf6e3a2, type: 2}
   - {fileID: 1345797864852760, guid: be952aca110ce914fb13c75931b7970c, type: 2}
   - {fileID: 1459969986119622, guid: 68dd19487ba3b0a4fb29b54e89c76e1c, type: 2}
+  createOverTime: 0
 --- !u!4 &1806014071
 Transform:
   m_ObjectHideFlags: 0

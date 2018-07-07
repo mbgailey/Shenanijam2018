@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameBounds : MonoBehaviour {
 
-  BoxCollider2D gameBounds;
+  //BoxCollider2D gameBounds;
   GameManager gameManager;
 
 	// Use this for initialization
@@ -24,30 +24,39 @@ public class GameBounds : MonoBehaviour {
 
   }
 
-  private void OnTriggerExit2D(Collider2D collision)
+  private void OnTriggerExit2D(Collider2D collider)
   {
     //Debug.Log("OnTriggerEnter " + collision.name.ToString());
-    if (collision.CompareTag("Rocket"))
+    if (collider.CompareTag("Rocket"))
     {
-      if (!collision.GetComponent<FieldObjectDestructor>().isBeingDestroyed)
+      if (!collider.GetComponent<FieldObjectDestructor>().isBeingDestroyed)
       {
         //collision.GetComponent<RocketController>().Escape();
-        collision.GetComponent<RocketController>().Destroyed();
+        collider.GetComponent<RocketController>().Destroyed();
       }
 
-      
+
       //gameManager.RocketEscaped();
     }
 
-    //else if (collision.CompareTag("Debris"))
-    //{
-    //  GameObject.Destroy(collision.gameObject, 1f);
-    //}
+    else if (collider.CompareTag("Debris"))
+    {
+      if(collider.GetComponent<DebrisController>().activeOnScreen == true)
+      {
+        GameObject.Destroy(collider.gameObject, 1f);
+      }
+    }
   }
+  
 
-  private void OnTriggerEnter2D(Collider2D collision)
+  private void OnTriggerEnter2D(Collider2D collider)
   {
-    //Debug.Log("OnTriggerEnter " + collision.name.ToString());
+    if (collider.CompareTag("Debris"))
+    {
+      collider.GetComponent<DebrisController>().activeOnScreen = true;
+
+
+    }
   }
 
 }

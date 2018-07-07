@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour {
   public int rocketsDestroyed = 0;
   public int launchInterval = 5;
   public float gameDurationSec = 120f;
-  
+  public DebrisField mainDebrisField;
 
+  public int gamePhase = 0;
+  float timeToNextPhase = 20f;
+  float gameTimer = 0f;
 
   float launchTimer;
   public bool gameOver = false;
@@ -39,6 +42,8 @@ public class GameManager : MonoBehaviour {
     gameDurationSec = GameSettings.Instance.GameDuration;
     Debug.Log("Game duration set to " + gameDurationSec);
     SetBlackHoleGrowSpeed();
+    timeToNextPhase = gameDurationSec / 15f; //Phases will be 20s for long (300s) game. 8s for short (120s) game;
+    UpdateGameDifficulty();
   }
 	
 	// Update is called once per frame
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour {
     if (!gameOver)
     {
       RunLaunchTimer();
+      RunGameTimer();
     }
     
 
@@ -68,6 +74,51 @@ public class GameManager : MonoBehaviour {
     }
 
     GUIController.UpdateCountdown(launchTimer);
+  }
+
+  void RunGameTimer()
+  {
+    gameTimer += Time.deltaTime;
+    if(gameTimer >= timeToNextPhase)
+    {
+      gamePhase++;
+      UpdateGameDifficulty();
+      gameTimer = 0f;
+    }
+
+  }
+
+  void UpdateGameDifficulty()
+  {
+    switch (gamePhase)
+    {
+      case 0:
+        mainDebrisField.SetNewDebrisParameters(0, 20f);
+        break;
+      case 1:
+        mainDebrisField.SetNewDebrisParameters(1, 15f);
+        break;
+      case 2:
+        mainDebrisField.SetNewDebrisParameters(2, 15f);
+        break;
+      case 3:
+        mainDebrisField.SetNewDebrisParameters(3, 10f);
+        break;
+      case 4:
+        mainDebrisField.SetNewDebrisParameters(4, 10f);
+        break;
+      case 5:
+        mainDebrisField.SetNewDebrisParameters(3, 5f);
+        break;
+      case 6:
+        mainDebrisField.SetNewDebrisParameters(4, 5f);
+        break;
+      default:
+        mainDebrisField.SetNewDebrisParameters(4, 3f);
+        break;
+
+
+    }
   }
 
   public void ResetTimer()

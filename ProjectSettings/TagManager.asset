@@ -8,6 +8,7 @@ TagManager:
   - Debris
   - Blackhole
   - Planet
+  - Gamebounds
   layers:
   - Default
   - TransparentFX

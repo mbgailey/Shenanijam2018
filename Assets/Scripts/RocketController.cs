@@ -159,7 +159,7 @@ public class RocketController : MonoBehaviour {
     //rb.simulated = true;
     rb.isKinematic = false;
     rb.bodyType = RigidbodyType2D.Dynamic;
-    rb.AddRelativeForce(Vector3.up * thrustForce/60, ForceMode2D.Impulse); //Translate vertically for X seconds
+    rb.AddRelativeForce(Vector3.up * thrustForce/80, ForceMode2D.Impulse); //Translate vertically for X seconds
 
     thrustEffect.Play();
     thrustEmitter.enabled = true;
@@ -171,7 +171,6 @@ public class RocketController : MonoBehaviour {
     }
     yield return new WaitForSeconds(1f);
     controllable = true;
-    thrustEmitter.enabled = false;
     objDestructor.invincible = false;
 
     StartCoroutine(myLaunchPad.PrepareLaunchPad());

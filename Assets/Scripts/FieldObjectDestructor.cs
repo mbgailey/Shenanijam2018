@@ -36,44 +36,47 @@ public class FieldObjectDestructor : MonoBehaviour {
 
   IEnumerator Explode()
   {
-    
-    //Debug.Log("Explode");
-
-    float explodeDelay = 0.2f;
-
-    //Start break apart effect
-    isBeingDestroyed = true;
-
-    if (crashSound != null)
+    if (!isBeingDestroyed)
     {
-      audioSource.PlayOneShot(crashSound);
+
+      //Debug.Log("Explode");
+
+      float explodeDelay = 0.2f;
+
+      //Start break apart effect
+      isBeingDestroyed = true;
+
+      if (crashSound != null)
+      {
+        audioSource.PlayOneShot(crashSound);
+      }
+      yield return new WaitForSeconds(explodeDelay);
+
+      StartCoroutine(camShake.Shake());
+      rocketController.Destroyed();
+
+      if (explodeEffect != null)
+      {
+        explodeEffect.Play();
+        explodeEmitter.enabled = true;
+        //Instantiate(explodeEffect, transform.position, Quaternion.identity);
+      }
+
+      GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
+      flavor.transform.position = this.transform.position;
+      flavor.GetComponent<DialogueController>().InitializeText_explode();
+      flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
+
+      this.GetComponent<SpriteRenderer>().enabled = false;
+      this.GetComponent<PolygonCollider2D>().enabled = false;
+
+      if (explodeSound != null)
+      {
+        audioSource.PlayOneShot(explodeSound);
+      }
+
+      Destroy(this.gameObject, 2f); //Wait to destroy in case stuff is still going on
     }
-    yield return new WaitForSeconds(explodeDelay);
-
-    StartCoroutine(camShake.Shake());
-    rocketController.Destroyed();
-
-    if (explodeEffect != null)
-    {
-      explodeEffect.Play();
-      explodeEmitter.enabled = true;
-      //Instantiate(explodeEffect, transform.position, Quaternion.identity);
-    }
-
-    GameObject flavor = Instantiate(flavorText, this.transform.position, Quaternion.identity);
-    flavor.transform.position = this.transform.position;
-    flavor.GetComponent<DialogueController>().InitializeText_explode();
-    flavor.GetComponent<DialogueController>().SetPath(this.transform.position);
-
-    this.GetComponent<SpriteRenderer>().enabled = false;
-    this.GetComponent<PolygonCollider2D>().enabled = false;
-
-    if (explodeSound != null)
-    {
-      audioSource.PlayOneShot(explodeSound);
-    }
-
-    Destroy(this.gameObject, 2f); //Wait to destroy in case stuff is still going on
   }
 
   void BlackHoleDeath()
